@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+jsm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Others
+node_modules
+build
+npm-debug.log
+.env
+.DS_Store
