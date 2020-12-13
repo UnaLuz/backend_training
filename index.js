@@ -1,21 +1,30 @@
+const { json } = require('express');
 const express = require('express');
-
 const app = express();
 
+
+
 app.get('/', (req, res) => {
-    res.send('Hello world!');
+    res.send('GET petition recieved');
 });
 
-app.get('/about', (req, res) =>{
-  res.send('About me..');
+app.get('/user', (req, res) => {
+    res.json({
+        username: 'Cameron',
+        lastname: 'Diaz'
+    });
 });
 
-app.get('/contact', (req, res) => {
-    res.send('*Form contact*')
+app.post('/about', (req, res) =>{
+  res.send('POST petition recieved');
 });
 
-app.get('/test', (req, res) =>{
-    res.send('<h1>TEST</h1>');
+app.put('/contact', (req, res) => {
+    res.send('PUT request recieved')
+});
+
+app.delete('/test', (req, res) =>{
+    res.send('<h1>DELETE request recieved</h1>');
 });
 
 app.listen(5000, () => {
