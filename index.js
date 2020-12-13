@@ -2,7 +2,7 @@ const { json } = require('express');
 const express = require('express');
 const app = express();
 
-
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('GET petition recieved');
@@ -16,7 +16,14 @@ app.get('/user', (req, res) => {
 });
 
 app.post('/about', (req, res) =>{
-  res.send('POST petition recieved');
+    res.send('POST petition recieved');
+});
+
+app.post('/user/:id', (req, res) =>{
+    console.log(req.body);
+    console.log(req.params);
+
+    res.send('POST petition recieved');
 });
 
 app.put('/contact', (req, res) => {
