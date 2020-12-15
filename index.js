@@ -6,9 +6,11 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
+/*
 app.get('/', (req, res) => {
     res.send('GET petition recieved');
 });
+*/
 
 app.all('/gr8', (req, res, next) => {
     console.log("You're doing great");
@@ -44,6 +46,8 @@ app.delete('/test', (req, res) =>{
 app.delete('/user/:userId', (req, res) =>{
     res.send(`User ${req.params.userId} deleted`);
 });
+
+app.use(express.static('public'));
 
 app.listen(5000, () => {
     console.log('Server on port 5000');
