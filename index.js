@@ -2,15 +2,26 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 
+// Settings
+app.set('appName', 'Fazt Express tutorial');
+app.set('port', 3000);
+app.set('view engine', 'ejs');
+
 // Middlewares, deben estar antes de las rutas para que funcionen
 app.use(express.json());
 app.use(morgan('dev'));
 
+// Routs
 /*
 app.get('/', (req, res) => {
     res.send('GET petition recieved');
 });
 */
+
+app.get('/', (req, res) => {
+    const data = [{name: 'Pablo'}, {name: 'Pedro'}, {name: 'Pipo'}, {name: 'Pocho'}];
+    res.render('index.ejs', {people:data});
+});
 
 app.all('/gr8', (req, res, next) => {
     console.log("You're doing great");
@@ -49,6 +60,7 @@ app.delete('/user/:userId', (req, res) =>{
 
 app.use(express.static('public'));
 
-app.listen(5000, () => {
-    console.log('Server on port 5000');
+app.listen(app.get('port'), () => {
+  console.log(app.get('appName'));
+  console.log('Server on port', app.get('port'));
 });
